@@ -25,8 +25,9 @@
 % -----------------------------------
 % default and update values for title
 % -----------------------------------
-\newcommand{\headername}{\paratname}
-\newcommand{\titlepagespace}{3em}
+\newcommand{\headername}{\paratnamelong}
+\newcommand{\headerwidth}{7.5cm}
+\newcommand{\titlepagespace}{2em}
 
 % -----------------------------------
 % Keine default Klassifizierungstexte
@@ -96,9 +97,9 @@
 \rohead[\rheaderplain]{\if@chapter\rheadermark\else\rheaderplain\fi}
 \lehead[\lheaderplain]{\if@chapter\lheadermark\else\lheaderplain\fi}
 \ifoot[%
-	\scriptsize \paratnamelong { }| \@author { }| \@date%
+	\scriptsize \paratname { }| \@author { }| \@date%
 ]{%
-	\scriptsize \paratnamelong { }| \@author { }| \@date%
+	\scriptsize \paratname { }| \@author { }| \@date%
 }
 
 \chead{\raisebox{1.8cm}[0cm]{\Large{\textcolor{\classcolor}{\classified \hspace{1cm}}}}}
@@ -126,7 +127,8 @@
 	\thispagestyle{title}
 	\if@titlepage\vspace*{\tpagemargin}\else\fi
 	\begin{flushright}
-	{\Huge\headername\par\large\@title}
+	\parbox{\headerwidth}{\Large\headername}
+	\vspace{\titlepagespace}\par{\large\@title}
 	\ifthenelse{\equal{\classified}{}}{}{
 		\\ \Large{\textcolor{\classcolor}{\classified}}
 	}
@@ -145,3 +147,4 @@
 \newcommand{\backgroundviolet}{}
 
 \backgrounddefault
+
