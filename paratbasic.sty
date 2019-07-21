@@ -1,0 +1,115 @@
+%!TEX encoding = UTF-8 Unicode%-------------------------------------------------------
+% Author: Stefan Thöni
+% Email: stefan.thoeni@parat.swiss
+%-------------------------------------------------------
+
+\ProvidesPackage{paratbasic}[2019/07/21 v1.0 (Stefan "Exception" Thöni)]
+\RequirePackage{calc}
+\RequirePackage{scrbase}
+
+% -----------------------------------
+% Schrift und Absatz
+% -----------------------------------
+
+\RequirePackage[parfill]{parskip}
+\RequirePackage{ifxetex}
+
+\ifxetex
+	\RequirePackage{fontspec}
+	\RequirePackage{xltxtra}
+	\RequirePackage{xunicode}
+	\setromanfont[
+		BoldFont=Montserrat Bold
+	]{Montserrat Regular}
+	\setsansfont[
+		BoldFont=Montserrat Bold
+	]{Montserrat Regular}
+\else
+	\RequirePackage[utf8]{inputenc}
+	\RequirePackage[T1]{fontenc}
+\fi
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% -----------------------------------
+% Farben
+% -----------------------------------
+\RequirePackage{xcolor}
+
+\definecolor{shadetop}{cmyk}{0,0.25,1,0}
+\definecolor{shadebottom}{cmyk}{0,0.55,1,0}
+
+\definecolor{weiss}{cmyk}{0,0,0,0}
+\definecolor{gelb}{cmyk}{0,0.1,1,0}
+\definecolor{orange}{cmyk}{0,0.35,1,0}
+\definecolor{hellrot}{cmyk}{0,0.75,1,0}
+\definecolor{dunkelrot}{cmyk}{0.15,1,0.6,0}
+\definecolor{schwarz}{cmyk}{1,1,1,1}
+\definecolor{violet}{cmyk}{0.65,0.75,0,0.35}
+\definecolor{hellviolet}{RGB}{197,159,242}
+\definecolor{blau}{cmyk}{0.8,0.5,0,0}
+\definecolor{grau}{cmyk}{0,0,0,0.28}
+
+% -----------------------------------
+% Grafiken
+% -----------------------------------
+\RequirePackage{graphicx}
+\RequirePackage{eso-pic}
+
+\newlength{\tlogowidth}
+\newlength{\hlogoheight}
+\newlength{\hlogospace}
+\newlength{\tpagemargin}
+\newlength{\abstractwidth}
+\AtBeginDocument{
+	\setlength{\hlogoheight}{\headheight/3*2}
+	\setlength{\hlogospace}{\hlogoheight/2}
+	\setlength{\tlogowidth}{\linewidth/2}
+	\setlength{\tpagemargin}{\textheight/10}
+	\setlength{\abstractwidth}{\linewidth/10*8}
+}
+
+\newcommand{\biglogost}{%
+	\includegraphics[width=\tlogowidth]{\paratlogost}
+}
+
+\newcommand{\smalllogost}{%
+	\includegraphics[height=\hlogoheight]{\paratlogost}%
+}
+
+\newcommand{\headerlogo}{%
+	\smalllogost%
+	\vspace{\hlogospace}%
+}
+
+% -----------------------------------
+% Tikz Styles
+% -----------------------------------
+\RequirePackage{tikz}
+
+\tikzset{help lines/.style={color=violet!30, very thin}}
+
+% -----------------------------------
+% Sprache
+% -----------------------------------
+\RequirePackage[english,french,italian,ngerman]{babel}
+
+\providecaptionname{english}{\paratlogost}{logo/en/st.pdf}
+\providecaptionname{french}{\paratlogost}{logo/fr/st.pdf}
+\providecaptionname{italian}{\paratlogost}{logo/it/st.pdf}
+\providecaptionname{ngerman}{\paratlogost}{logo/de/st.pdf}
+
+\providecaptionname{english}{\paratname}{\textbf{PARAT}}
+\providecaptionname{french}{\paratname}{\textbf{PARAT}}
+\providecaptionname{italian}{\paratname}{\textbf{PARAT}}
+\providecaptionname{ngerman}{\paratname}{\textbf{PARAT}}
+
+\providecaptionname{english}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{french}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{italian}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{ngerman}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+
+\providecaptionname{english}{\paratdomain}{www.parat.swiss}
+\providecaptionname{french}{\paratdomain}{www.parat.swiss}
+\providecaptionname{italian}{\paratdomain}{www.parat.swiss}
+\providecaptionname{ngerman}{\paratdomain}{www.parat.swiss}
