@@ -5,7 +5,10 @@
 
 \ProvidesPackage{paratdocument}[2019/07/21 v1.0 (Stefan "Exception" Thöni)]
 \RequirePackage{xifthen}
+\RequirePackage{lastpage}
 \RequirePackage{paratbasic}
+\RequirePackage[absolute]{textpos}
+\RequirePackage[automark]{scrpage2}
 
 % -----------------------------------
 % Schrift und Absatz
@@ -27,18 +30,27 @@
 % -----------------------------------
 \newcommand{\headername}{\paratnamelong}
 \newcommand{\headerwidth}{7.5cm}
-\newcommand{\titlepagespace}{2em}
+\newcommand{\titlepagespace}{3em}
 
 % -----------------------------------
-% Keine default Klassifizierungstexte
+% Klassifizierung des Dokuments
 % -----------------------------------
 \newcommand{\classified}{}
-\newcommand{\classcolor}{black}
+\newcommand{\setclassified}[1]{\renewcommand{\classified}{#1}}
+\newcommand{\classcolor}{red}
+
+% -----------------------------------
+% Entwurfsmarkierung
+% -----------------------------------
+\newcommand{\draft}[2]{
+\RequirePackage{draftwatermark}
+\SetWatermarkText{#1}
+\SetWatermarkLightness{0.8}
+\SetWatermarkScale{#2}}
 
 % -----------------------------------
 % Kopf- und fusszeile
 % -----------------------------------
-\RequirePackage[automark]{scrpage2}
 \KOMAoptions{headinclude=true}
 \KOMAoptions{footinclude=false}
 \KOMAoptions{headlines=3}
@@ -48,103 +60,33 @@
 \clearscrheadfoot
 \pagestyle{scrheadings}
 
-\setlength{\marginparwidth}{2.1em}
-\setheadwidth[0pt]{textwithmarginpar}
-
-\ihead[\smalllogost]{\smalllogost}
-
-
-\newcommand{\rheaderplain}{
-	\raisebox{0em}{
-		\begin{tabular}[t]{rp{\marginparwidth-0.7em}}
-			\scriptsize & \\
-			\textbf{\@title}   & \hfill \pagemark\\
-			\hline
-		\end{tabular}
-	}
-}
-
-\newcommand{\lheaderplain}{
-	\raisebox{0em}{
-		\begin{tabular}[t]{p{\marginparwidth-1em}l}
-			& \scriptsize \\
-			\raisebox{0em}{\pagemark} & \textbf{\@title}   \\
-			\hline
-		\end{tabular}
-	}
-}
-
-\newcommand{\rheadermark}{
-	\raisebox{0em}{
-		\begin{tabular}[t]{rp{\marginparwidth-0.7em}}
-			\textbf{\@title} & \\
-			\scriptsize \headmark & \hfill\pagemark\\
-			\hline
-		\end{tabular}
-	}
-}
-
-\newcommand{\lheadermark}{
-	\raisebox{0em}{
-		\begin{tabular}[t]{p{\marginparwidth-1em}l}
-			& \textbf{\@title} \\
-			\raisebox{0em}{\pagemark} & \scriptsize \headmark \\
-			\hline
-		\end{tabular}
-	}
-}
-
-\rohead[\rheaderplain]{\if@chapter\rheadermark\else\rheaderplain\fi}
-\lehead[\lheaderplain]{\if@chapter\lheadermark\else\lheaderplain\fi}
-\ifoot[%
-	\scriptsize \paratname { }| \@author { }| \@date%
-]{%
-	\scriptsize \paratname { }| \@author { }| \@date%
-}
-
-\chead{\raisebox{1.8cm}[0cm]{\Large{\textcolor{\classcolor}{\classified \hspace{1cm}}}}}
-\cfoot{\raisebox{-2.2cm}[0cm]{\Large{\textcolor{\classcolor}{\classified \hspace{1cm}}}}}
-
-\deftripstyle{title}{\headerlogo}{}{}{}{}{}
-
-
-\renewenvironment{titlepage}{
-	\ClearShipoutPicture
-	\AddToShipoutPicture*{
-		\begin{tikzpicture}
-			\draw (0,0) -- (0,0);
-			\draw [color=orange, fill=orange](\ta@bcor+1cm,1cm) rectangle (\paperwidth-1cm,\paperheight-1cm);
-		\end{tikzpicture}}
-}{
-	\begin{flushright}
-		\vfill\biglogost
-	\end{flushright}
-	\thispagestyle{empty}
-	\newpage
+\ihead{\smalllogost}
+\ohead{\textbf{\Large\@title} \\ \@subtitle}
+\ifoot{\@author}
+\cfoot{\@date}
+\renewcommand{\pagemark}{\thepage{} / \pageref{LastPage}}
+\ofoot{\pagemark}
+\chead{%
+\begin{textblock}{16}[0,0](0,0.7)
+    \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
+\end{textblock}
+\begin{textblock}{16}[0,0](0,15.3)
+    \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
+\end{textblock}
 }
 
 \renewcommand{\maketitle}{
-	\thispagestyle{title}
-	\if@titlepage\vspace*{\tpagemargin}\else\fi
+	\thispagestyle{empty}
+    \logonamebox{1}
 	\begin{flushright}
-	\parbox{\headerwidth}{\Large\headername}
-	\vspace{\titlepagespace}\par{\large\@title}
-	\ifthenelse{\equal{\classified}{}}{}{
-		\\ \Large{\textcolor{\classcolor}{\classified}}
-	}
+	\vspace{\titlepagespace}\par\textbf{\huge\@title}
+	\ifthenelse{\equal{\@subtitle}{}}{}{\\ \vspace{0.1cm} {\Large\@subtitle}}
+	\ifthenelse{\equal{\classified}{}}{}{\\ \vspace{0.3cm} {\LARGE{\textcolor{\classcolor}{\textbf{\classified}}}}}
 	\par
 	\vspace{\titlepagespace}{\raggedleft\scriptsize\@author\hspace{1em}\@date}
 	\end{flushright}
-	\vspace{2em}
+	\vspace{\titlepagespace}
 }
 
-\newcommand{\backgrounddefault}{}
-
-\newcommand{\backgroundorange}{}
-
-\newcommand{\backgroundgrey}{}
-
-\newcommand{\backgroundviolet}{}
-
-\backgrounddefault
+\RequirePackage[a4paper,left=2cm,right=2cm,top=4cm]{geometry}
 

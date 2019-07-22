@@ -36,20 +36,6 @@
 % -----------------------------------
 \RequirePackage{xcolor}
 
-\definecolor{shadetop}{cmyk}{0,0.25,1,0}
-\definecolor{shadebottom}{cmyk}{0,0.55,1,0}
-
-\definecolor{weiss}{cmyk}{0,0,0,0}
-\definecolor{gelb}{cmyk}{0,0.1,1,0}
-\definecolor{orange}{cmyk}{0,0.35,1,0}
-\definecolor{hellrot}{cmyk}{0,0.75,1,0}
-\definecolor{dunkelrot}{cmyk}{0.15,1,0.6,0}
-\definecolor{schwarz}{cmyk}{1,1,1,1}
-\definecolor{violet}{cmyk}{0.65,0.75,0,0.35}
-\definecolor{hellviolet}{RGB}{197,159,242}
-\definecolor{blau}{cmyk}{0.8,0.5,0,0}
-\definecolor{grau}{cmyk}{0,0,0,0.28}
-
 % -----------------------------------
 % Grafiken
 % -----------------------------------
@@ -62,9 +48,9 @@
 \newlength{\tpagemargin}
 \newlength{\abstractwidth}
 \AtBeginDocument{
-	\setlength{\hlogoheight}{\headheight/3*2}
+	\setlength{\hlogoheight}{0.88cm}
 	\setlength{\hlogospace}{\hlogoheight/2}
-	\setlength{\tlogowidth}{\linewidth/2}
+	\setlength{\tlogowidth}{\headerwidth}
 	\setlength{\tpagemargin}{\textheight/10}
 	\setlength{\abstractwidth}{\linewidth/10*8}
 }
@@ -80,6 +66,13 @@
 \newcommand{\headerlogo}{%
 	\smalllogost%
 	\vspace{\hlogospace}%
+}
+
+\newcommand{\logonamebox}[1]{%
+    \scalebox{#1}{%
+	\parbox{\headerwidth}{%
+	\biglogost\par
+	\Large\headername}}
 }
 
 % -----------------------------------
@@ -104,10 +97,10 @@
 \providecaptionname{italian}{\paratname}{\textbf{PARAT}}
 \providecaptionname{ngerman}{\paratname}{\textbf{PARAT}}
 
-\providecaptionname{english}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
-\providecaptionname{french}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
-\providecaptionname{italian}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
-\providecaptionname{ngerman}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{english}{\paratnamelong}{Partei f¿r Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{french}{\paratnamelong}{Partei f¿r Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{italian}{\paratnamelong}{Partei f¿r Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{ngerman}{\paratnamelong}{Partei f¿r Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
 
 \providecaptionname{english}{\paratdomain}{www.parat.swiss}
 \providecaptionname{french}{\paratdomain}{www.parat.swiss}
