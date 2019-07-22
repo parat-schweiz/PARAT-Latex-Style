@@ -60,12 +60,12 @@
 \clearscrheadfoot
 \pagestyle{scrheadings}
 
-\ihead{\smalllogost}
-\ohead{\textbf{\Large\@title} \\ \@subtitle}
-\ifoot{\@author}
-\cfoot{\@date}
+\ihead{\vspace{-0.15cm}\smalllogost}
+\ohead{\scriptsize\textbf{\small\@title} \\ \@subtitle}
+\ifoot{\footnotesize\@author}
+\cfoot{\footnotesize\@date}
 \renewcommand{\pagemark}{\thepage{} / \pageref{LastPage}}
-\ofoot{\pagemark}
+\ofoot{\footnotesize\pagemark}
 \chead{%
 \begin{textblock}{16}[0,0](0,0.7)
     \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
