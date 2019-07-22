@@ -18,12 +18,16 @@
 	\RequirePackage{fontspec}
 	\RequirePackage{xltxtra}
 	\RequirePackage{xunicode}
-	\setromanfont[
-		BoldFont=Montserrat Bold
-	]{Montserrat Regular}
-	\setsansfont[
-		BoldFont=Montserrat Bold
-	]{Montserrat Regular}
+	\setromanfont[BoldFont=Montserrat SemiBold]{Montserrat Light}
+	\setsansfont[	BoldFont=Montserrat SemiBold]{Montserrat Light}
+	\newfontfamily{\fontml}{Montserrat Light}
+	\newfontfamily{\fontme}{Montserrat ExtraLight}
+	\newfontfamily{\fontms}{Montserrat SemiBold}
+	\newfontfamily{\fontmb}{Montserrat Bold}
+	\newfontfamily{\fontmr}{Montserrat Regular}
+	\newfontfamily{\fontmar}{Montserrat Alternates Regular}
+	\newfontfamily{\fontmas}{Montserrat Alternates SemiBold}
+	\newfontfamily{\fontmab}{Montserrat Alternates Bold}
 \else
 	\RequirePackage[utf8]{inputenc}
 	\RequirePackage[T1]{fontenc}
@@ -69,10 +73,10 @@
 }
 
 \newcommand{\logonamebox}[1]{%
-    \scalebox{#1}{%
+	\scalebox{#1}{%
 	\parbox{\headerwidth}{%
 	\biglogost\par
-	\Large\headername}}
+	{\fontmas\Large\headername}}}
 }
 
 % -----------------------------------
