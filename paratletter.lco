@@ -1,0 +1,78 @@
+% !TEX encoding = UTF-8 Unicode
+% Author: Stefan Thöni
+% Email: stefan.thoeni@parat.swiss
+%-------------------------------------------------------
+
+\ProvidesFile{paratletter.lco}[2019/07/21 v1.0 (Stefan "Exception" Thöni)]
+
+\RequirePackage{paratbasic}
+\RequirePackage{multirow}
+
+\LoadLetterOption{SN}
+\KOMAoptions{foldmarks=true}
+\KOMAoptions{foldmarks=blmTp}
+
+
+%-------------------------------------------------------
+% New-Var
+\newkomavar{departement}
+\newkomavar{partei}
+\newkomavar{fromstreet}
+\newkomavar{fromcity}
+
+\setkomavar{date}{\today}
+
+% kompatibilitaet zu komascript
+\setkomavar{fromaddress}{\usekomavar{fromstreet}\\\usekomavar{fromcity}}
+
+% -----------------------------------
+% Schrift und Absatz
+% -----------------------------------
+\ifxetex
+	\setkomafont{subject}{\bfseries}
+\else
+	% nothing
+\fi
+
+\KOMAoptions{fontsize=11pt}
+
+\DeclareFixedFont{\headtext}{\encodingdefault}{\familydefault}{\seriesdefault}{\shapedefault}{8pt}
+
+% -----------------------------------
+% Sprache
+% -----------------------------------
+
+\setkomavar{fromurl}{\paratdomain}
+\setkomavar{fromlogo}{\includegraphics[width=5.5cm]{\paratlogost}}
+
+\setkomavar{partei}{\paratnamelong}
+
+%-------------------------------------------------------
+% Positionnen
+\@setplength{lochpos}{-2.5cm}
+\@setplength{locvpos}{6.3cm}
+
+
+%-------------------------------------------------------
+% Location
+\setkomavar{location}{}
+
+%-------------------------------------------------------
+% Kopfzeile
+\firsthead{\headtext
+	\begin{tabular}{p{8cm}p{5.5cm}p{5.5cm}}
+		\multirow{5}{*}[0.5cm]{\usekomavar{fromlogo}} & \usekomavar{partei} & \\  
+		& \usekomavar{departement} & \\
+		& \usekomavar{fromname} & \\ 
+		& \usekomavar{fromstreet} & \usekomavar{fromemail} \\
+		& \usekomavar{fromcity} & \usekomavar{fromurl} \\
+	\end{tabular}
+}
+
+%-------------------------------------------------------
+% Fusszeile
+%\firstfoot{%
+%
+%
+%}
+\endinput
