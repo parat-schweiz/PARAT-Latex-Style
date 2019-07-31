@@ -111,3 +111,21 @@
 \providecaptionname{italian}{\paratdomain}{www.parat.swiss}
 \providecaptionname{ngerman}{\paratdomain}{www.parat.swiss}
 
+% -----------------------------------
+% Paragraph numbering
+% -----------------------------------
+\newcommand{\parnum}{\arabic{parcount}}
+\newcounter{parcount}
+\newenvironment{parnumbers}{%
+	\par%
+	\everypar{\stepcounter{parcount}\leavevmode\marginpar[\hfill\parnum]{\parnum}}%
+}{%
+}
+
+% -----------------------------------
+% Section numbering
+% -----------------------------------
+\newcommand{\nosecnum}{\setcounter{secnumdepth}{-1}}
+\newcommand{\stdsecnum}{\setcounter{secnumdepth}{3}}
+\newcommand{\secnum}[1]{\setcounter{secnumdepth}{#1}}
+
