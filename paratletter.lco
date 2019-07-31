@@ -80,34 +80,3 @@
 %}
 \endinput
 
-%-------------------------------------------------------
-% Sectioning
-%-------------------------------------------------------
-\newcounter{section}
-\newcounter{subsection}[section]
-\newcounter{subsubsection}[subsection]
-\setcounter{secnumdepth}{4}
-\makeatletter
-\newcommand{\section}[1]{%
-\stepcounter{section}
-\vspace{6mm plus 1mm minus 1mm}
-{\Large\textbf{\thesection{} #1}}
-\nopagebreak\vspace{3mm plus 1mm minus 1mm}\nopagebreak
-}
-\newcommand{\subsection}[1]{%
-\stepcounter{subsection}
-\vspace{4mm plus 1mm minus 1mm}
-{\large\textbf{\thesubsection{} #1}}
-\nopagebreak\vspace{2mm plus 1mm minus 1mm}\nopagebreak
-}
-\newcommand{\subsubsection}[1]{%
-\stepcounter{subsubsection}
-\vspace{2mm plus 1mm minus 1mm}
-{\textbf{\thesubsubsection{} #1}}
-\nopagebreak\vspace{1mm plus 1mm minus 1mm}\nopagebreak
-}
-\renewcommand{\thesection}{\@arabic\c@section}
-\renewcommand{\thesubsection}{\thesection.\@arabic\c@subsection}
-\renewcommand{\thesubsubsection}{\thesubsection.\@arabic\c@subsubsection}
-\makeatother
-
