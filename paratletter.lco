@@ -9,7 +9,7 @@
 \RequirePackage{multirow}
 
 \LoadLetterOption{SN}
-\KOMAoptions{foldmarks=true}
+\KOMAoptions{foldmarks=false}
 \KOMAoptions{foldmarks=blmTp}
 
 
@@ -41,7 +41,6 @@
 % -----------------------------------
 % Sprache
 % -----------------------------------
-
 \setkomavar{fromurl}{\paratdomain}
 \setkomavar{fromlogo}{\includegraphics[width=5.5cm]{\paratlogost}}
 
@@ -49,16 +48,19 @@
 
 %-------------------------------------------------------
 % Positionnen
+%-------------------------------------------------------
 \@setplength{lochpos}{-2.5cm}
 \@setplength{locvpos}{6.3cm}
 
 
 %-------------------------------------------------------
 % Location
+%-------------------------------------------------------
 \setkomavar{location}{}
 
 %-------------------------------------------------------
 % Kopfzeile
+%-------------------------------------------------------
 \firsthead{\headtext
 	\begin{tabular}{p{8cm}p{5.5cm}p{5.5cm}}
 		\multirow{5}{*}[0.5cm]{\usekomavar{fromlogo}} & \usekomavar{partei} & \\  
@@ -71,8 +73,15 @@
 
 %-------------------------------------------------------
 % Fusszeile
+%-------------------------------------------------------
 %\firstfoot{%
 %
 %
 %}
 \endinput
+
+%-------------------------------------------------------
+% Geometry
+%-------------------------------------------------------
+\newcommand{\stdgeom}{\newgeometry{a4paper,left=2cm,right=2cm,top=4cm}}
+
