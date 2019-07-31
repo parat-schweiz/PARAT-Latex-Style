@@ -100,7 +100,7 @@
                                      {-3ex\@plus -1ex \@minus -.2ex}%
                                      {0.8ex \@plus .2ex}%
                                      {\normalfont\bfseries}}
-\renewcommand \thesection{\@arabic\c@section}
+\renewcommand\thesection{\@arabic\c@section}
 \renewcommand\thesubsection{\thesection.\@arabic\c@subsection}
 \renewcommand\thesubsubsection{\thesubsection.\@arabic\c@subsubsection}
 \makeatother
