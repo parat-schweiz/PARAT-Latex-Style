@@ -3,12 +3,14 @@
 % Email: stefan.thoeni@parat.swiss
 %-------------------------------------------------------
 
-\ProvidesPackage{paratdocument}[2019/07/21 v1.0 (Stefan "Exception" Thöni)]
+\ProvidesPackage{paratdocument}[2024/10/10 v2.0 (Stefan "Exception" Thöni)]
+
+\RequirePackage{paratbasic}
 \RequirePackage{xifthen}
 \RequirePackage{lastpage}
 \RequirePackage{paratbasic}
 \RequirePackage[absolute]{textpos}
-\RequirePackage[automark]{scrpage2}
+\RequirePackage[automark]{scrlayer-scrpage}
 
 % -----------------------------------
 % Schrift und Absatz
@@ -28,7 +30,7 @@
 % -----------------------------------
 % default and update values for title
 % -----------------------------------
-\newcommand{\headername}{\paratnamelong}
+\newcommand{\headername}{\paratlogosub}
 \newcommand{\headerwidth}{7.8cm}
 \newcommand{\titlepagespace}{3em}
 
@@ -40,15 +42,6 @@
 \newcommand{\classcolor}{red}
 
 % -----------------------------------
-% Entwurfsmarkierung
-% -----------------------------------
-\newcommand{\draft}[2]{
-\RequirePackage{draftwatermark}
-\SetWatermarkText{#1}
-\SetWatermarkLightness{0.8}
-\SetWatermarkScale{#2}}
-
-% -----------------------------------
 % Kopf- und fusszeile
 % -----------------------------------
 \KOMAoptions{headinclude=true}
@@ -57,7 +50,7 @@
 \KOMAoptions{pagesize}
 \recalctypearea
 
-\clearscrheadfoot
+\clearpairofpagestyles
 \pagestyle{scrheadings}
 
 \ihead{\vspace{-0.15cm}\smalllogost}

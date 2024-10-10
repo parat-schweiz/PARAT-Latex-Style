@@ -3,7 +3,7 @@
 % Email: stefan.thoeni@parat.swiss
 %-------------------------------------------------------
 
-\ProvidesFile{paratletter.lco}[2019/07/21 v1.0 (Stefan "Exception" Thöni)]
+\ProvidesFile{paratletter.lco}[2024/10/10 v2.0 (Stefan "Exception" Thöni)]
 
 \RequirePackage{paratbasic}
 \RequirePackage{multirow}
@@ -49,8 +49,8 @@
 %-------------------------------------------------------
 % Positionnen
 %-------------------------------------------------------
-\@setplength{lochpos}{-2.5cm}
-\@setplength{locvpos}{6.3cm}
+\setplength{lochpos}{-2.5cm}
+\setplength{locvpos}{6.3cm}
 
 
 %-------------------------------------------------------
@@ -61,13 +61,18 @@
 %-------------------------------------------------------
 % Kopfzeile
 %-------------------------------------------------------
-\firsthead{\headtext
-	\begin{tabular}{p{8cm}p{5.5cm}p{5.5cm}}
-		\multirow{5}{*}[0.5cm]{\usekomavar{fromlogo}} & \usekomavar{partei} & \\  
-		& \usekomavar{departement} & \\
-		& \usekomavar{fromname} & \\ 
-		& \usekomavar{fromstreet} & \usekomavar{fromemail} \\
-		& \usekomavar{fromcity} & \usekomavar{fromurl} \\
+\RequirePackage{textpos}
+\setkomavar{firsthead}{\headtext
+    \begin{textblock*}{0cm}(0.5cm,0.35cm)
+    \usekomavar{fromlogo}
+    \end{textblock*}
+    
+	\hspace{8cm}\begin{tabular}{p{5.5cm}p{5.5cm}}
+		\usekomavar{partei} & \\  
+		\usekomavar{departement} & \\
+		\usekomavar{fromname} & \\ 
+		\usekomavar{fromstreet} & \usekomavar{fromemail} \\
+		\usekomavar{fromcity} & \usekomavar{fromurl} \\
 	\end{tabular}
 }
 
@@ -78,5 +83,28 @@
 %
 %
 %}
+
+%-------------------------------------------------------
+% Sectioning
+%-------------------------------------------------------
+\makeatletter
+\newcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries}}
+\newcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\large\bfseries}}
+\newcommand\thesection{\@arabic\c@section}
+\newcommand\thesubsection{\thesection.\@arabic\c@subsection}
+\makeatother
+
+%-------------------------------------------------------
+% Options
+%-------------------------------------------------------
+\newcommand{\headerwidth}{1cm}
+
 \endinput
+
 

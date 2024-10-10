@@ -1,0 +1,56 @@
+\ProvidesPackage{zglawsmall}[2024/10/10 v2.0 (Stefan "Exception" Thöni)]
+\RequirePackage{tabularx}
+\KOMAoptions{DIV=15}
+\setcounter{secnumdepth}{-1}
+
+\newcommand{\art}[2]
+{
+	\vspace{0.2cm}
+	\begin{tabular}{ p{1.5cm} p{0.5cm} p{5.7cm} }
+	\textbf{§ #1} & \multicolumn{2}{p{5.85cm}}{\textbf{#2}} \\
+	\end{tabular}
+	
+}
+
+\newcommand{\abs}[2]
+{
+	\begin{tabular}{ p{0.5cm} p{0.5cm} p{6.7cm} }
+    \multicolumn{3}{p{7.75cm}}{\uber{#1} #2} \\
+	\end{tabular}
+	
+	
+}
+
+\newcommand{\zif}[2]
+{
+	\begin{tabular}{ p{0.5cm} p{0.5cm} p{6.7cm} }
+	#1. & \multicolumn{2}{p{6.85cm}}{#2} \\
+	\end{tabular}
+	
+	
+	
+}
+
+\newcommand{\lit}[2]
+{
+	\begin{tabular}{ p{0.5cm} p{0.5cm} p{6.7cm} }
+	#1. & \multicolumn{2}{p{6.85cm}}{#2} \\
+	\end{tabular}
+	
+	
+	
+}
+
+\newcommand{\refart}[1]{§ #1}
+\newcommand{\refabs}[2]{§ #1 Abs. #2}
+\newcommand{\refzif}[3]{§ #1 Abs. #2 zif. #3}
+\newcommand{\reflit}[3]{§ #1 Abs. #2 Lit. #3}
+\newcommand{\removed}
+{
+	\iflanguage{ngerman}{\tiny \textit{aufgehoben}}
+	
+	\iflanguage{french}{\tiny \textit{abrogée}}
+}
+\newcommand{\uber}[1]{$^{\textnormal{\tiny #1}}$}
+\newcommand{\uberlarge}[1]{$^{\textnormal{\scriptsize #1}}$}
+

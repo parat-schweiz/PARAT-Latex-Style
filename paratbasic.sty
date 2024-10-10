@@ -3,7 +3,7 @@
 % Email: stefan.thoeni@parat.swiss
 %-------------------------------------------------------
 
-\ProvidesPackage{paratbasic}[2019/07/21 v1.0 (Stefan "Exception" Th¿ni)]
+\ProvidesPackage{paratbasic}[2024/10/10 v2.0 (Stefan "Exception" Th¿ni)]
 \RequirePackage{calc}
 \RequirePackage{scrbase}
 
@@ -62,7 +62,6 @@
 \newcommand{\biglogost}{%
 	\includegraphics[width=\tlogowidth]{\paratlogost}
 }
-
 \newcommand{\smalllogost}{%
 	\includegraphics[height=\hlogoheight]{\paratlogost}%
 }
@@ -91,10 +90,15 @@
 % -----------------------------------
 \RequirePackage[english,french,italian,ngerman]{babel}
 
-\providecaptionname{english}{\paratlogost}{logo/en/st.pdf}
-\providecaptionname{french}{\paratlogost}{logo/fr/st.pdf}
-\providecaptionname{italian}{\paratlogost}{logo/it/st.pdf}
+\providecaptionname{english}{\paratlogost}{logo/de/st.pdf}
+\providecaptionname{french}{\paratlogost}{logo/de/st.pdf}
+\providecaptionname{italian}{\paratlogost}{logo/de/st.pdf}
 \providecaptionname{ngerman}{\paratlogost}{logo/de/st.pdf}
+
+\providecaptionname{english}{\paratlogosub}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{french}{\paratlogosub}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{italian}{\paratlogosub}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
+\providecaptionname{ngerman}{\paratlogosub}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
 
 \providecaptionname{english}{\paratname}{\textbf{PARAT}}
 \providecaptionname{french}{\paratname}{\textbf{PARAT}}
@@ -106,20 +110,43 @@
 \providecaptionname{italian}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
 \providecaptionname{ngerman}{\paratnamelong}{Partei für Rationale Politik, Allgemeine Menschenrechte und Teilhabe}
 
-\providecaptionname{english}{\paratdomain}{www.parat.top}
-\providecaptionname{french}{\paratdomain}{www.parat.top}
-\providecaptionname{italian}{\paratdomain}{www.parat.top}
-\providecaptionname{ngerman}{\paratdomain}{www.parat.top}
+\providecaptionname{english}{\paratdomain}{www.parat.swiss}
+\providecaptionname{french}{\paratdomain}{www.parat.swiss}
+\providecaptionname{italian}{\paratdomain}{www.parat.swiss}
+\providecaptionname{ngerman}{\paratdomain}{www.parat.swiss}
 
-% -----------------------------------
-% Paragraph numbering
-% -----------------------------------
-\newcommand{\parnum}{\arabic{parcount}}
-\newcounter{parcount}
-\newenvironment{parnumbers}{%
-	\par%
-	\everypar{\stepcounter{parcount}\leavevmode\marginpar[\hfill\parnum]{\parnum}}%
-}{%
+\newcommand{\setzg}{%
+	\renewcaptionname{english}{\paratlogost}{logo/de/zg.pdf}
+	\renewcaptionname{french}{\paratlogost}{logo/de/zg.pdf}
+	\renewcaptionname{italian}{\paratlogost}{logo/de/zg.pdf}
+	\renewcaptionname{ngerman}{\paratlogost}{logo/de/zg.pdf}
+
+	\renewcaptionname{english}{\paratlogosub}{}
+	\renewcaptionname{french}{\paratlogosub}{}
+	\renewcaptionname{italian}{\paratlogosub}{}
+	\renewcaptionname{ngerman}{\paratlogosub}{}
+
+	\renewcaptionname{english}{\paratdomain}{zg.parat.swiss}
+	\renewcaptionname{french}{\paratdomain}{zg.parat.swiss}
+	\renewcaptionname{italian}{\paratdomain}{zg.parat.swiss}
+	\renewcaptionname{ngerman}{\paratdomain}{zg.parat.swiss}
+}
+
+\newcommand{\setsti}{%
+	\renewcaptionname{english}{\paratlogost}{logo/de/sti.pdf}
+	\renewcaptionname{french}{\paratlogost}{logo/de/sti.pdf}
+	\renewcaptionname{italian}{\paratlogost}{logo/de/sti.pdf}
+	\renewcaptionname{ngerman}{\paratlogost}{logo/de/sti.pdf}
+
+	\renewcaptionname{english}{\paratlogosub}{}
+	\renewcaptionname{french}{\paratlogosub}{}
+	\renewcaptionname{italian}{\paratlogosub}{}
+	\renewcaptionname{ngerman}{\paratlogosub}{}
+
+	\renewcaptionname{english}{\paratdomain}{steinhausen.parat.swiss}
+	\renewcaptionname{french}{\paratdomain}{steinhausen.parat.swiss}
+	\renewcaptionname{italian}{\paratdomain}{steinhausen.parat.swiss}
+	\renewcaptionname{ngerman}{\paratdomain}{steinhausen.parat.swiss}
 }
 
 % -----------------------------------
@@ -128,4 +155,37 @@
 \newcommand{\nosecnum}{\setcounter{secnumdepth}{-1}}
 \newcommand{\stdsecnum}{\setcounter{secnumdepth}{3}}
 \newcommand{\secnum}[1]{\setcounter{secnumdepth}{#1}}
+
+%-------------------------------------------------------
+% Options
+%-------------------------------------------------------
+\widowpenalty10000
+\clubpenalty10000
+
+%-------------------------------------------------------
+% Additional packages
+%-------------------------------------------------------
+\RequirePackage[german=swiss]{csquotes}
+
+%-------------------------------------------------------
+% Additional commands
+%-------------------------------------------------------
+\newcommand{\bis}{{\tiny\raisebox{0.6em}{bis}}}
+
+\newcommand{\draft}[2]{%
+	\usepackage{draftwatermark}
+	\SetWatermarkText{#1}
+	\SetWatermarkLightness{0.8}
+	\SetWatermarkScale{#2}
+}
+\newcommand{\vernehmlassung}{%
+	\draft{Vernehmlassung}{0.5}
+}
+
+\newcommand{\parnum}{\arabic{parcount}}
+\newcounter{parcount}
+\newcommand\p{%
+    \stepcounter{parcount}%
+    \hspace{-0.12cm}\leavevmode\marginpar[\hfill\parnum]{\parnum}%
+}
 

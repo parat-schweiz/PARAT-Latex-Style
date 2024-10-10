@@ -1,0 +1,118 @@
+% !TEX encoding = UTF-8 Unicode
+% Author: Stefan Thöni
+% Email: stefan.thoeni@parat.swiss
+%-------------------------------------------------------
+
+\ProvidesPackage{paratdecision}[2019/07/21 v1.0 (Stefan "Exception" Thöni)]
+\RequirePackage{xifthen}
+\RequirePackage{lastpage}
+\RequirePackage{paratbasic}
+\RequirePackage[absolute]{textpos}
+\RequirePackage[automark]{scrlayer-scrpage}
+
+% -----------------------------------
+% Schrift und Absatz
+% -----------------------------------
+\setkomafont{pagefoot}{\upshape}
+\setkomafont{pagehead}{\upshape}
+\setkomafont{sectioning}{\bfseries}
+
+\KOMAoptions{fontsize=11pt}
+
+% -----------------------------------
+% Farben für den Gebrauch im Dokument
+% -----------------------------------
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{black}{rgb}{0,0,0}
+
+% -----------------------------------
+% default and update values for title
+% -----------------------------------
+\newcommand{\headername}{\paratnamelong}
+\newcommand{\headerwidth}{7.8cm}
+\newcommand{\titlepagespace}{3em}
+
+% -----------------------------------
+% Klassifizierung des Dokuments
+% -----------------------------------
+\newcommand{\classified}{}
+\newcommand{\setclassified}[1]{\renewcommand{\classified}{#1}}
+\newcommand{\classcolor}{red}
+
+% -----------------------------------
+% Kopf- und fusszeile
+% -----------------------------------
+\KOMAoptions{headinclude=true}
+\KOMAoptions{footinclude=false}
+\KOMAoptions{headlines=3}
+\KOMAoptions{pagesize}
+\recalctypearea
+
+\clearpairofpagestyles
+\pagestyle{scrheadings}
+
+\ihead{\vspace{-0.15cm}\smalllogo}
+\ohead{\scriptsize\textbf{\small\@title \\ \aktenzeichen}}
+\renewcommand{\pagemark}{\thepage{} / \pageref{LastPage}}
+\ofoot{\footnotesize\pagemark}
+\chead{%
+\begin{textblock}{16}[0,0](0,0.7)
+    \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
+\end{textblock}
+\begin{textblock}{16}[0,0](0,15.3)
+    \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
+\end{textblock}
+}
+
+\newboolean{redacted}
+\setboolean{redacted}{false}
+\newcommand{\redacted}[0]{\setboolean{redacted}{true}}
+\newcommand{\redact}[1]{\ifthenelse{\boolean{redacted}}{\_\_\_\_\_\_\_\_}{#1}}
+\newcommand{\redactname}[2]{\ifthenelse{\boolean{redacted}}{#2.\_\_\_\_\_\_}{#1}}
+
+\providecaptionname{english}{\paratlogoschst}{logo/de/schst.pdf}
+\providecaptionname{french}{\paratlogoschst}{logo/de/schst.pdf}
+\providecaptionname{italian}{\paratlogoschst}{logo/de/schst.pdf}
+\providecaptionname{ngerman}{\paratlogoschst}{logo/de/schst.pdf}
+
+\providecaptionname{english}{\paratlogoschstsq}{logo/de/schstsq.pdf}
+\providecaptionname{french}{\paratlogoschstsq}{logo/de/schstsq.pdf}
+\providecaptionname{italian}{\paratlogoschstsq}{logo/de/schstsq.pdf}
+\providecaptionname{ngerman}{\paratlogoschstsq}{logo/de/schstsq.pdf}
+
+\newcommand{\schiedsstelle}[0]{%
+    \newcommand{\titleorgan}{%
+    
+    \vspace{0.5cm}
+    
+    {der}
+    
+    \vspace{0.5cm}
+    
+    \largelogo}
+    \newcommand{\smalllogo}{\includegraphics[width=3cm]{\paratlogoschstsq}}
+    \newcommand{\largelogo}{\includegraphics[width=6cm]{\paratlogoschst}}
+}
+
+\renewcommand{\maketitle}{
+	\thispagestyle{empty}
+	\begin{center}
+	{\textbf{\huge\@title}}
+	\titleorgan
+	\end{center}
+	
+	\vspace{1cm}
+	
+	vom \\
+	\textbf{\@date}
+	
+	\vspace{-1.3cm}
+
+	\begin{flushright}
+	Verfahren \\
+	\textbf{\aktenzeichen}
+	\end{flushright}
+}
+
+\RequirePackage[a4paper,left=2cm,right=2cm,top=4cm]{geometry}
+
