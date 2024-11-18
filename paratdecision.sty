@@ -33,13 +33,6 @@
 \newcommand{\titlepagespace}{3em}
 
 % -----------------------------------
-% Klassifizierung des Dokuments
-% -----------------------------------
-\newcommand{\classified}{}
-\newcommand{\setclassified}[1]{\renewcommand{\classified}{#1}}
-\newcommand{\classcolor}{red}
-
-% -----------------------------------
 % Kopf- und fusszeile
 % -----------------------------------
 \KOMAoptions{headinclude=true}
@@ -57,10 +50,10 @@
 \ofoot{\footnotesize\pagemark}
 \chead{%
 \begin{textblock}{16}[0,0](0,0.7)
-    \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
+    \centering {\Large{\textcolor{\classcolor}{\textbf{\theclassified}}}}
 \end{textblock}
 \begin{textblock}{16}[0,0](0,15.3)
-    \centering {\Large{\textcolor{\classcolor}{\textbf{\classified}}}}
+    \centering {\Large{\textcolor{\classcolor}{\textbf{\theclassified}}}}
 \end{textblock}
 }
 
@@ -99,6 +92,7 @@
 	\begin{center}
 	{\textbf{\huge\@title}}
 	\titleorgan
+	\ifthenelse{\equal{\theclassified}{}}{}{\\ \vspace{0.3cm} {\LARGE{\textcolor{\classcolor}{\textbf{\theclassified}}}}}
 	\end{center}
 	
 	\vspace{1cm}
